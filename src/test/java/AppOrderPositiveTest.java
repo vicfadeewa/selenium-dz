@@ -3,6 +3,10 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.Collection;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -31,8 +35,9 @@ public class AppOrderPositiveTest {
 
     @Test
     public void testOrderCardForm() {
-        driver.findElement(By.cssSelector("[data-test-id='name']")).sendKeys("Тестов Игнат Борисович");
-        driver.findElement(By.cssSelector("[data-test-id='phone']")).sendKeys("+79991230000");
+        List<WebElement> inputs = driver.findElements(By.tagName("input"));
+        inputs.get(0).sendKeys("Тестов Игнат Борисович");
+        inputs.get(1).sendKeys("+79991230000");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button")).click();
         WebElement actualElement = driver.findElement(By.cssSelector("[data-test-id=order-success]"));
