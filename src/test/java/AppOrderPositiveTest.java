@@ -35,9 +35,8 @@ public class AppOrderPositiveTest {
 
     @Test
     public void testOrderCardForm() {
-        List<WebElement> inputs = driver.findElements(By.tagName("input"));
-        inputs.get(0).sendKeys("Тестов Игнат Борисович");
-        inputs.get(1).sendKeys("+79991230000");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Тестов Игнат Борисович");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79991230000");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button")).click();
         WebElement actualElement = driver.findElement(By.cssSelector("[data-test-id=order-success]"));
